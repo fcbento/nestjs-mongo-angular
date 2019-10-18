@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, EmailValidator } from '@angular/forms';
+import { FormBuilder, Validators, EmailValidator, FormGroup } from '@angular/forms';
 import { CustomerService } from '../services/customer.service';
+import { Observable } from 'rxjs';
+import { User } from '../models/user.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create',
@@ -9,17 +12,21 @@ import { CustomerService } from '../services/customer.service';
 })
 export class CreateComponent implements OnInit {
 
-  createForm;
+  public createForm: FormGroup;
+  public user: User;
 
-  constructor(private formBuilder: FormBuilder, private customerService: CustomerService) {
+  constructor
+    (private formBuilder: FormBuilder,
+      private customerService: CustomerService,
+      private toastr: ToastrService) {
 
     this.createForm = this.formBuilder.group({
-      name: ['', Validators.minLength(3)],
-      last_name: ['', Validators.minLength(3)],
-      email: [''],
-      phone: ['', Validators.minLength(3)],
-      document: ['', Validators.minLength(3)],
-      description: ['', Validators.minLength(3)]
+      name: '',
+      last_name: '',
+      email: '',
+      phone: '',
+      document: '',
+      description: ''
     });
 
   }
@@ -27,8 +34,15 @@ export class CreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  create() {
-    console.log(this.createForm)
-    //this.customerService.create();
+  public create(): void {
+    this.user = this.createForm.value;
+    
+    this.customerService.create(this.user).subscribe(data => {
+      
+      this.toastr.success(data['message'], 'Customer created');    
+    
+    }, (err) => {
+      console.log(err)
+    })
   }
 }

@@ -8,6 +8,9 @@ import { CreateComponent } from './create/create.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {NgxMaskModule, IConfig} from 'ngx-mask';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -22,7 +25,10 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     FormsModule,
+    HttpClientModule,
     NgxMaskModule.forRoot(options)
   ],
   providers: [],
