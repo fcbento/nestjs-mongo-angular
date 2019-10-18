@@ -1,0 +1,134 @@
+<form [formGroup]="createForm" (ngSubmit)="create()" class="box">
+
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+       
+        <input 
+            type="text" 
+            class="form-control" 
+            id="firstName" 
+            placeholder="Enter first name" 
+            formControlName="name"
+            required>
+
+        <div *ngIf="createForm.get('name').hasError('required') && createForm.get('name').touched">
+            <ngb-alert [dismissible]="false" type="danger">
+                <strong> <i class="fa fa-info-circle"></i> Required</strong> Name is required
+            </ngb-alert>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="lasttName">Last Name</label>
+       
+        <input 
+            type="text" 
+            class="form-control" 
+            id="lasttName" 
+            placeholder="Enter last name" 
+            formControlName="last_name"
+            required>
+
+        <div *ngIf="createForm.get('last_name').hasError('required') && createForm.get('last_name').touched">
+            <ngb-alert [dismissible]="false" type="danger">
+                <strong> <i class="fa fa-info-circle"></i> Required</strong> Last name is required
+            </ngb-alert>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        
+        <input 
+            type="text" 
+            pattern="^\S+@\S+$"
+            class="form-control" 
+            id="email" 
+            placeholder="example@email.com" 
+            formControlName="email"
+            required>
+
+        <div *ngIf="createForm.get('email').hasError('required') && createForm.get('email').touched">
+            <ngb-alert [dismissible]="false" type="danger">
+                <strong> <i class="fa fa-info-circle"></i> Required</strong> Email is required
+            </ngb-alert>
+
+        </div>
+
+        <div *ngIf="createForm.get('email').hasError('pattern') && createForm.get('email').touched">
+            <ngb-alert [dismissible]="false" type="danger">
+                 <strong> <i class="fa fa-info-circle"></i> Invalid</strong> Email is invalid
+            </ngb-alert>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="phone" 
+            mask="(00) 00000-0000" 
+            [clearIfNotMatch]="true" 
+            placeholder="(00) 00000-0000"
+            formControlName="phone" 
+            required>
+
+        <div *ngIf="createForm.get('phone').hasError('required') && createForm.get('phone').touched">
+            <ngb-alert [dismissible]="false" type="danger">
+                <strong> <i class="fa fa-info-circle"></i> Required</strong> Phone is required
+            </ngb-alert>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="document">Documento No</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="document" 
+            mask="000.000.000-00"
+            [clearIfNotMatch]="true" 
+            placeholder="CPF"
+            formControlName="document" 
+            required>
+
+        <div *ngIf="createForm.get('document').hasError('required') && createForm.get('document').touched">
+            <ngb-alert [dismissible]="false" type="danger">
+                <strong> <i class="fa fa-info-circle"></i> Required</strong> document is required
+            </ngb-alert>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="description" 
+            placeholder="Description" 
+            formControlName="description"
+            required>
+
+        <div *ngIf="createForm.get('description').hasError('required') && createForm.get('description').touched">
+            <ngb-alert [dismissible]="false" type="danger">
+                <strong> <i class="fa fa-info-circle"></i> Required</strong> Description is required
+            </ngb-alert>
+        </div>
+    </div>
+
+    <button 
+        type="type"
+        class="btn btn-primary btn-lg" 
+        [disabled]="createForm.get('name').hasError('required') || 
+                    createForm.get('last_name').hasError('required') || 
+                    createForm.get('email').hasError('required') || 
+                    createForm.get('phone').hasError('required') ||
+                    createForm.get('document').hasError('required') || 
+                    createForm.get('description').hasError('required')">
+        Create
+    </button>
+</form>
