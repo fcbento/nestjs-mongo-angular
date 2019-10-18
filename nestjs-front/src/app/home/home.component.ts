@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PipeTransform } from '@angular/core';
+import { CustomerService } from '../services/customer.service';
+import { User } from '../models/user.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public users$: Observable<User[]>;
 
-  ngOnInit() {
+  constructor(private customerService: CustomerService) {
+
   }
 
+  ngOnInit() {
+    this.customerService.getAll().subscribe(data => {
+      this.users$ = data;
+    })
+  }
 }

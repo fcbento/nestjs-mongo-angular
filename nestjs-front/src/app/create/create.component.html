@@ -125,7 +125,8 @@
         class="btn btn-primary btn-lg" 
         [disabled]="createForm.get('name').hasError('required') || 
                     createForm.get('last_name').hasError('required') || 
-                    createForm.get('email').hasError('required') || 
+                    createForm.get('email').hasError('required') ||
+                    createForm.get('email').hasError('pattern') ||
                     createForm.get('phone').hasError('required') ||
                     createForm.get('document').hasError('required') || 
                     createForm.get('description').hasError('required')">

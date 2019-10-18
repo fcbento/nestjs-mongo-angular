@@ -1,1 +1,32 @@
-<p>home works!</p>
+  
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Document</th>
+      <th scope="col">Description</th>
+      <th scope="col">Created</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users$">
+       <td>
+        <ngb-highlight [result]="user.name"></ngb-highlight>
+      </td>
+      <td><ngb-highlight [result]="user.last_name"></ngb-highlight></td>
+      <td><ngb-highlight [result]="user.email"></ngb-highlight></td>
+      <td><ngb-highlight [result]="user.phone | mask: '(00) 00000-0000'"></ngb-highlight></td>
+      <td><ngb-highlight [result]="user.document | mask: '000.000.000-00'"></ngb-highlight></td>
+      <td><ngb-highlight [result]="user.description"></ngb-highlight></td>
+      <td><ngb-highlight [result]="user.created_at | date: 'dd/MM/yyyy'"></ngb-highlight></td>
+      <td>
+        <i class="fa fa-times"></i>
+        <i class="fa fa-edit"></i>
+      </td>
+    </tr>
+    </tbody>
+  </table>
