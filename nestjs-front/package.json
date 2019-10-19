@@ -20,9 +20,11 @@
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
     "@ng-bootstrap/ng-bootstrap": "^5.1.1",
+    "@sweetalert2/ngx-sweetalert2": "^6.0.1",
     "ngx-mask": "^8.1.2",
     "ngx-toastr": "^11.1.2",
     "rxjs": "~6.4.0",
+    "sweetalert2": "^8.18.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

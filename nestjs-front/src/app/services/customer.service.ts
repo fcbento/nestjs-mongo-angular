@@ -16,6 +16,10 @@ export class CustomerService {
   }
 
   getAll(){
-    return this.http.get<Observable<User[]>>(API_URL + '/customers');
+    return this.http.get<User[]>(API_URL + '/customers');
+  }
+
+  delete(customerID: string){
+     return this.http.delete(API_URL + `/delete/?customerID=${customerID}`);
   }
 }

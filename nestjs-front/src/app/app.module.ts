@@ -11,6 +11,7 @@ import {NgxMaskModule, IConfig} from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -27,6 +28,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    SweetAlert2Module.forRoot(),
     FormsModule,
     HttpClientModule,
     NgxMaskModule.forRoot(options)
