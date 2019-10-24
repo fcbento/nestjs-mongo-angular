@@ -83,7 +83,22 @@
                         <strong> <i class="fa fa-info-circle"></i> Required</strong> Description is required
                     </ngb-alert>
                 </div>
+                
             </div>
+
+            <div class="form-group">
+                <label for="description">Password</label>
+                <input type="password" class="form-control" id="description" placeholder="Password"
+                    formControlName="password" required>
+
+                <div
+                    *ngIf="createForm.get('password').hasError('required') && createForm.get('password').touched">
+                    <ngb-alert [dismissible]="false" type="danger">
+                        <strong> <i class="fa fa-info-circle"></i> Required</strong> Password is required
+                    </ngb-alert>
+                </div>
+                
+            </div>            
 
             <button type="type" class="btn btn-primary btn-lg" [disabled]="createForm.get('name').hasError('required') || 
                     createForm.get('last_name').hasError('required') || 

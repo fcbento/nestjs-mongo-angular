@@ -8,4 +8,6 @@ export interface Customer extends Document {
     readonly document: string;
     readonly description: string;
     readonly created_at: Date;
+    readonly tokens: [{ token: string }];
+    err: string;
 }

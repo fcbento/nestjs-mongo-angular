@@ -28,7 +28,8 @@ export class CreateComponent implements OnInit {
       email: '',
       phone: '',
       document: '',
-      description: ''
+      description: '',
+      password: ''
     });
 
   }

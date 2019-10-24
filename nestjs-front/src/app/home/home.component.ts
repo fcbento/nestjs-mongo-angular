@@ -16,12 +16,11 @@ export class HomeComponent implements OnInit {
   public id: string = '';
   public user: User;
   public editForm: FormGroup;
-
+z
   constructor(
     private customerService: CustomerService,
     private modalService: NgbModal,
-    private toastr: ToastrService,
-    private formBuilder: FormBuilder) {}
+    private toastr: ToastrService) {}
      
   ngOnInit() {
     this.customerService.getAll().subscribe(data => {

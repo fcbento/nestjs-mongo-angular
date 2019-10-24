@@ -1,6 +1,7 @@
 import { Controller, Get, Res, HttpStatus, Post, Body, Put, Query, NotFoundException, Delete, Param } from '@nestjs/common';
 import { CustomerService } from './customer.service';
 import { CreateCustomerDTO } from './dto/create-customer.dto';
+import CheckDuplicated from './utils/customer.utils';
 
 @Controller('customer')
 export class CustomerController {
@@ -8,11 +9,23 @@ export class CustomerController {
 
     @Post('/create')
     async addCustomer(@Res() res, @Body() createCustomerDTO: CreateCustomerDTO) {
+
         const customer = await this.customerService.addCustomer(createCustomerDTO);
-        return res.status(HttpStatus.OK).json({
-            message: "Customer has been created successfully",
-            customer
-        })
+
+        if (customer.name) {
+            return res.header('x-auth', customer.tokens[0].token)
+                .status(HttpStatus.OK)
+                .json({
+                    message: "Customer has been created successfully",
+                    customer
+                });
+        } else {
+            const checkedDuplicated = CheckDuplicated(customer.toString());
+            res.status(HttpStatus.FORBIDDEN).json({
+                message: checkedDuplicated
+            });
+        }
+
     }
 
     @Get('customers')
@@ -45,6 +58,15 @@ export class CustomerController {
         return res.status(HttpStatus.OK).json({
             message: 'Customer has been deleted',
             customer
-        })
+        });
+    }
+
+    @Post('/login')
+    async loginCustomer(@Res() res, @Body() createCustomerDTO: CreateCustomerDTO) {
+        const customer = await this.customerService.loginCustomer(createCustomerDTO);
+        return res.status(HttpStatus.OK).json({
+            message: "Customer has been logged successfully",
+            customer
+        });
     }
 }

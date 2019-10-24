@@ -6,7 +6,7 @@ import { CreateCustomerDTO } from './dto/create-customer.dto';
 
 @Injectable()
 export class CustomerService {
-    
+
     constructor(@InjectModel('Customer') private readonly customerModel: Model<Customer>) { }
 
     async getAllCustomer(): Promise<Customer[]> {
@@ -20,8 +20,14 @@ export class CustomerService {
     }
 
     async addCustomer(createCustomerDTO: CreateCustomerDTO): Promise<Customer> {
-        const newCustomer = await this.customerModel(createCustomerDTO);
-        return newCustomer.save();
+        try {
+            const newCustomer = await this.customerModel(createCustomerDTO);
+            const token = await newCustomer.generateAuthToken();
+            return newCustomer.save();
+        } catch (e) {
+            return e.errmsg;
+        }
+
     }
 
     async updateCustomer(customerID, createCustomerDTO: CreateCustomerDTO): Promise<Customer> {
@@ -33,5 +39,10 @@ export class CustomerService {
     async deleteCustomer(customerID): Promise<any> {
         const deletedCustomer = await this.customerModel.findByIdAndRemove(customerID);
         return deletedCustomer;
+    }
+
+    async loginCustomer(createCustomerDTO: CreateCustomerDTO): Promise<Customer> {
+        const customer = await this.customerModel.find({ email: createCustomerDTO.email }).exec();
+        return customer;
     }
 }
