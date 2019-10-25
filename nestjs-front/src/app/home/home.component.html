@@ -16,7 +16,9 @@
       <tbody>
         <tr *ngFor="let user of users | paginate: { itemsPerPage: 10, currentPage: p}">
           <td>
-            <ngb-highlight [result]="user.name"></ngb-highlight>
+            <a href="">
+              <ngb-highlight [result]="user.name"  ngbTooltip="Click for details"></ngb-highlight>
+            </a> 
           </td>
           <td>
             <ngb-highlight [result]="user.last_name"></ngb-highlight>
