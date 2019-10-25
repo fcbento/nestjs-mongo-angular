@@ -16,7 +16,8 @@ export class HomeComponent implements OnInit {
   public id: string = '';
   public user: User;
   public editForm: FormGroup;
-z
+  p: number = 1;
+
   constructor(
     private customerService: CustomerService,
     private modalService: NgbModal,

@@ -10,3 +10,20 @@ small{
     font-weight: bold;
     margin-left: 5px;
 }
+
+.alert{
+    margin-top: 9px;
+    //width:40%; 
+    font-size: 10px;
+}
+
+label{
+    font-size: 12px;
+    font-weight: bold;;
+}
+
+.btn-primary:disabled{
+    background-color: grey;
+    border: 1px solid grey;
+    color: rgb(197, 197, 197);
+}

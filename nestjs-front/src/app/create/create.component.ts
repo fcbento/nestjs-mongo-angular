@@ -17,7 +17,7 @@ export class CreateComponent implements OnInit {
   public user: User;
 
   constructor
-    ( private formBuilder: FormBuilder,
+    (private formBuilder: FormBuilder,
       private customerService: CustomerService,
       private toastr: ToastrService,
       private router: Router) {
@@ -34,19 +34,18 @@ export class CreateComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   public create(): void {
     this.user = this.createForm.value;
-    
+
     this.customerService.create(this.user).subscribe(data => {
-      
-      this.toastr.success(data['message'], 'Customer created');    
+
+      this.toastr.success(data['message'], `Customer ${this.user.name} created`);
       this.router.navigate(['home']);
-    
+
     }, (err) => {
-      console.log(err)
-    })
+      this.toastr.error(err.error.message)
+    });
   }
 }

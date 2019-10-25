@@ -27,7 +27,6 @@ export class CustomerService {
         } catch (e) {
             return e.errmsg;
         }
-
     }
 
     async updateCustomer(customerID, createCustomerDTO: CreateCustomerDTO): Promise<Customer> {

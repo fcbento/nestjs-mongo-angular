@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -31,6 +32,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     SweetAlert2Module.forRoot(),
     FormsModule,
     HttpClientModule,
+    NgxPaginationModule,
     NgxMaskModule.forRoot(options)
   ],
   providers: [],
