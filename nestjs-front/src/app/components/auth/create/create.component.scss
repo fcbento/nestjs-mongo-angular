@@ -1,6 +1,6 @@
 .box{
     border: 2px solid white;
-    padding: 20px;
+    padding: 70px;
     background: white;
     border-radius: 10px;
 }
@@ -20,6 +20,10 @@ small{
 label{
     font-size: 12px;
     font-weight: bold;;
+}
+
+button{
+    margin-top: 20px;
 }
 
 .btn-primary:disabled{

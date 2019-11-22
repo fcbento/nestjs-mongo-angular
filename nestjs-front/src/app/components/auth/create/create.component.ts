@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, EmailValidator, FormGroup } from '@angular/forms';
-import { CustomerService } from '../services/customer.service';
+import { CustomerService } from '../../../services/customer.service';
 import { Observable } from 'rxjs';
-import { User } from '../models/user.model';
+import { User } from '../../../models/user.model';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
