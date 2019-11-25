@@ -1,22 +1,10 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="login-section">
 
     <div class="form-group row">
         <label for="email" class="col-sm-3 col-form-label">Email</label>
         <div class="col-sm-12">
             <input type="text" pattern="^\S+@\S+$" class="form-control" id="email" placeholder="example@email.com"
                 formControlName="email" required>
-
-            <div *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched">
-                <ngb-alert [dismissible]="false" type="warning">
-                    <strong> <i class="fa fa-info-circle"></i> Email</strong> is required
-                </ngb-alert>
-            </div>
-
-            <div *ngIf="loginForm.get('email').hasError('pattern') && loginForm.get('email').touched">
-                <ngb-alert [dismissible]="false" type="warning">
-                    <strong> <i class="fa fa-info-circle"></i> Email</strong> is invalid
-                </ngb-alert>
-            </div>
         </div>
     </div>
 
@@ -25,19 +13,31 @@
         <div class="col-sm-12">
             <input type="password" class="form-control" id="description" placeholder="Password"
                 formControlName="password" required>
-
-            <div *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched">
-                <ngb-alert [dismissible]="false" type="warning">
-                    <strong> <i class="fa fa-info-circle"></i> Password</strong> is required
-                </ngb-alert>
-            </div>
         </div>
     </div>
 
-    <button type="button" class="btn btn-success btn-lg" [disabled]="loginForm.get('email').hasError('required') ||
-                        loginForm.get('email').hasError('pattern') ||
-                        loginForm.get('password').hasError('required')">
-        Login
-    </button>
+    <div class="row center-xs remember-password">
+        <div class="col-xs-6">
+            Remember me
+        </div>
+        <div class="col-xs-6">
+            Forgot password?
+        </div>
+
+    </div>
+
+    <div class="row center-xs social-medias">
+        <div class="col-xs-4">
+            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+        </div>
+        <div class="col-xs-4">
+            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+        </div>
+        <div class="col-xs-4">
+            <i class="fa fa-twitter-square" aria-hidden="true"></i>
+        </div>
+    </div>
+
+    <i class="fa fa-arrow-circle-right fa-4x login-btn" aria-hidden="true" (click)="login()"></i>
 
 </form>

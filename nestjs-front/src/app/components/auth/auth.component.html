@@ -1,15 +1,15 @@
-<div class="row center-xs">
+<div class="row center-xs bg-img ">
 
   <div class="col-xs-12 col-md-6 col-lg-6">
 
     <div class="row center-xs login-box">
 
       <div class="col-xs-6" (click)="goToLoginPage()">
-        <p> <i class="fa fa-arrow-up" [ngClass]="showLoginForm ? 'active-form' : ''"></i></p>
+        <p> <i class="fa fa-arrow-up action-btn" [ngClass]="showLoginForm ? 'active-form' : ''"></i></p>
       </div>
 
       <div class="col-xs-6"  (click)="goToCreatePage()">
-        <p> <i class="fa fa-user-plus" [ngClass]="showCreateForm ? 'active-form' : ''"></i></p>
+        <p> <i class="fa fa-user-plus action-btn" [ngClass]="showCreateForm ? 'active-form' : ''"></i></p>
       </div>
 
       <app-login *ngIf="showLoginForm"></app-login>
