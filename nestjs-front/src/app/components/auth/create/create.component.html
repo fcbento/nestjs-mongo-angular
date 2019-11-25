@@ -1,112 +1,81 @@
-<div class="row justify-content-center align-items-center p-3">
-    <div class="col-sm-5">
-        <form [formGroup]="createForm" (ngSubmit)="create()" class="box">
+<form [formGroup]="createForm" (ngSubmit)="create()">
 
-            <div class="form-group row">
-                <label for="name" class="col-sm-2 col-form-label">Name</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="firstName" placeholder="Enter first name"
-                        formControlName="name" required>
-                    <div *ngIf="createForm.get('name').hasError('required') && createForm.get('name').touched">
-                        <ngb-alert [dismissible]="false" type="warning">
-                            <strong> <i class="fa fa-info-circle"></i> Name</strong> is required
-                        </ngb-alert>
-                    </div>
-                </div>
+    <div class="form-group row">
+        <label for="name" class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-12">
+            <input type="text" class="form-control" id="firstName" placeholder="Enter first name" formControlName="name"
+                required>
+            <div *ngIf="createForm.get('name').hasError('required') && createForm.get('name').touched">
+                <ngb-alert [dismissible]="false" type="warning">
+                    <strong> <i class="fa fa-info-circle"></i> Name</strong> is required
+                </ngb-alert>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="lastName" class="col-sm-3 col-form-label">Last Name</label>
+        <div class="col-sm-12">
+            <input type="text" class="form-control" id="lasttName" placeholder="Enter last name"
+                formControlName="last_name" required>
+            <div *ngIf="createForm.get('last_name').hasError('required') && createForm.get('last_name').touched">
+                <ngb-alert [dismissible]="false" type="warning">
+                    <strong> <i class="fa fa-info-circle"></i> Last name </strong> is required
+                </ngb-alert>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="email" class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-12">
+            <input type="text" pattern="^\S+@\S+$" class="form-control" id="email" placeholder="example@email.com"
+                formControlName="email" required>
+
+            <div *ngIf="createForm.get('email').hasError('required') && createForm.get('email').touched">
+                <ngb-alert [dismissible]="false" type="warning">
+                    <strong> <i class="fa fa-info-circle"></i> Email</strong> is required
+                </ngb-alert>
             </div>
 
-            <div class="form-group row">
-                <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="lasttName" placeholder="Enter last name"
-                        formControlName="last_name" required>
-                    <div
-                        *ngIf="createForm.get('last_name').hasError('required') && createForm.get('last_name').touched">
-                        <ngb-alert [dismissible]="false" type="warning">
-                            <strong> <i class="fa fa-info-circle"></i> Last name </strong> is required
-                        </ngb-alert>
-                    </div>
-                </div>
+            <div *ngIf="createForm.get('email').hasError('pattern') && createForm.get('email').touched">
+                <ngb-alert [dismissible]="false" type="warning">
+                    <strong> <i class="fa fa-info-circle"></i> Email</strong> is invalid
+                </ngb-alert>
             </div>
+        </div>
+    </div>
 
-            <div class="form-group row">
-                <label for="email" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-10">
-                    <input type="text" pattern="^\S+@\S+$" class="form-control" id="email"
-                        placeholder="example@email.com" formControlName="email" required>
+    <div class="form-group row">
+        <label for="phone" class="col-sm-3 col-form-label">Phone</label>
+        <div class="col-sm-12">
+            <input type="text" class="form-control" id="phone" mask="(00) 00000-0000" [clearIfNotMatch]="true"
+                placeholder="(00) 00000-0000" formControlName="phone" required>
 
-                    <div *ngIf="createForm.get('email').hasError('required') && createForm.get('email').touched">
-                        <ngb-alert [dismissible]="false" type="warning">
-                            <strong> <i class="fa fa-info-circle"></i> Email</strong> is required
-                        </ngb-alert>
-                    </div>
-
-                    <div *ngIf="createForm.get('email').hasError('pattern') && createForm.get('email').touched">
-                        <ngb-alert [dismissible]="false" type="warning">
-                            <strong> <i class="fa fa-info-circle"></i> Email</strong> is invalid
-                        </ngb-alert>
-                    </div>
-                </div>
+            <div *ngIf="createForm.get('phone').hasError('required') && createForm.get('phone').touched">
+                <ngb-alert [dismissible]="false" type="warning">
+                    <strong> <i class="fa fa-info-circle"></i> Phone</strong> is required
+                </ngb-alert>
             </div>
+        </div>
+    </div>
 
-            <div class="form-group row">
-                <label for="phone" class="col-sm-2 col-form-label">Phone</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="phone" mask="(00) 00000-0000" [clearIfNotMatch]="true"
-                        placeholder="(00) 00000-0000" formControlName="phone" required>
 
-                    <div *ngIf="createForm.get('phone').hasError('required') && createForm.get('phone').touched">
-                        <ngb-alert [dismissible]="false" type="warning">
-                            <strong> <i class="fa fa-info-circle"></i> Phone</strong> is required
-                        </ngb-alert>
-                    </div>
-                </div>
+    <div class="form-group row">
+        <label for="description" class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-12">
+            <input type="password" class="form-control" id="description" placeholder="Password"
+                formControlName="password" required>
+
+            <div *ngIf="createForm.get('password').hasError('required') && createForm.get('password').touched">
+                <ngb-alert [dismissible]="false" type="warning">
+                    <strong> <i class="fa fa-info-circle"></i> Password</strong> is required
+                </ngb-alert>
             </div>
+        </div>
+    </div>
 
-            <!-- <div class="form-group row">
-                <label for="document" class="col-sm-2 col-form-label">Document</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="document" mask="000.000.000-00" [clearIfNotMatch]="true"
-                        placeholder="CPF" formControlName="document" required>
-
-                    <div *ngIf="createForm.get('document').hasError('required') && createForm.get('document').touched">
-                        <ngb-alert [dismissible]="false" type="warning">
-                            <strong> <i class="fa fa-info-circle"></i> Document</strong> is required
-                        </ngb-alert>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="description" class="col-sm-2 col-form-label">Description</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="description" placeholder="Description"
-                        formControlName="description" required>
-
-                    <div
-                        *ngIf="createForm.get('description').hasError('required') && createForm.get('description').touched">
-                        <ngb-alert [dismissible]="false" type="warning">
-                            <strong> <i class="fa fa-info-circle"></i> Description</strong> is required
-                        </ngb-alert>
-                    </div>
-                </div>
-            </div> -->
-
-            <div class="form-group row">
-                <label for="description" class="col-sm-2 col-form-label">Password</label>
-                <div class="col-sm-10">
-                    <input type="password" class="form-control" id="description" placeholder="Password"
-                        formControlName="password" required>
-
-                    <div *ngIf="createForm.get('password').hasError('required') && createForm.get('password').touched">
-                        <ngb-alert [dismissible]="false" type="warning">
-                            <strong> <i class="fa fa-info-circle"></i> Password</strong> is required
-                        </ngb-alert>
-                    </div>
-                </div>
-            </div>
-
-            <button type="button" class="btn btn-success btn-lg" [disabled]="createForm.get('name').hasError('required') || 
+    <button type="button" class="btn btn-success btn-lg" [disabled]="createForm.get('name').hasError('required') || 
                     createForm.get('last_name').hasError('required') || 
                     createForm.get('email').hasError('required') ||
                     createForm.get('email').hasError('pattern') ||
@@ -114,12 +83,7 @@
                     createForm.get('document').hasError('required') || 
                     createForm.get('description').hasError('required') ||
                     createForm.get('password').hasError('required')">
-                Create
-            </button>
+        Create
+    </button>
 
-            <button class="btn btn-primary btn-lg ml-2" routerLink="/">
-                Login
-            </button>
-        </form>
-    </div>
-</div>
+</form>

@@ -13,13 +13,15 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { LoginComponent } from './login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AuthRoutingModule } from './auth.routing.module';
+import { AuthComponent } from './auth.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
 @NgModule({
   declarations: [
     CreateComponent,
-    LoginComponent
+    LoginComponent,
+    AuthComponent
   ],
   imports: [
     CommonModule,

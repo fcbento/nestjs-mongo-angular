@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, EmailValidator, FormGroup } from '@angular/forms';
-import { CustomerService } from '../../../services/customer.service';
 import { Observable } from 'rxjs';
 import { User } from '../../../models/user.model';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create',
@@ -18,7 +18,7 @@ export class CreateComponent implements OnInit {
 
   constructor
     (private formBuilder: FormBuilder,
-      private customerService: CustomerService,
+      private userService: UserService,
       private toastr: ToastrService,
       private router: Router) {
 
@@ -39,7 +39,7 @@ export class CreateComponent implements OnInit {
   public create(): void {
     this.user = this.createForm.value;
 
-    this.customerService.create(this.user).subscribe(data => {
+    this.userService.create(this.user).subscribe(data => {
 
       this.toastr.success(data['message'], `Customer ${this.user.name} created`);
       this.router.navigate(['home']);

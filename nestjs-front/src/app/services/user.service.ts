@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import { API_URL } from '../api/api';
 import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService {
+export class UserService {
 
   constructor(private http: HttpClient) { }
 

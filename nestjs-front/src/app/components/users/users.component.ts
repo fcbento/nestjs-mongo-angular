@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { FormGroup } from '@angular/forms';
-import { CustomerService } from '../../services/customer.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-users',
@@ -19,12 +19,12 @@ export class UsersComponent implements OnInit {
 
   p: number = 1;
 
-  constructor(private customerService: CustomerService,
+  constructor(private userService: UserService,
     private modalService: NgbModal,
     private toastr: ToastrService) { }
 
     ngOnInit() {
-      this.customerService.getAll().subscribe(data => {
+      this.userService.getAll().subscribe(data => {
         this.users = data;
       })
     }
@@ -40,7 +40,7 @@ export class UsersComponent implements OnInit {
     }
   
     deleteCustomer() {
-      this.customerService.delete(this.user._id).subscribe(data => {
+      this.userService.delete(this.user._id).subscribe(data => {
         this.modalService.dismissAll();
   
         this.users.forEach((user, index) => {
@@ -53,7 +53,7 @@ export class UsersComponent implements OnInit {
     }
   
     updateCustomer(user: User){
-        this.customerService.update(user).subscribe(data => {
+        this.userService.update(user).subscribe(data => {
           this.modalService.dismissAll();
           this.toastr.success(data['message'], 'Customer updated');
         }, (err) => {
