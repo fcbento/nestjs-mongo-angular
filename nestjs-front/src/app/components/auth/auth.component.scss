@@ -11,6 +11,14 @@
   background-image: url("/assets/ppl.jpg");
 }
 
+input{
+  border: 2px solid yellow;
+
+  &:focus{
+    border-color:yellow;
+    outline: none;
+  }
+}
 
 .action-btn{
     transition: all 0.5s ease-in-out;

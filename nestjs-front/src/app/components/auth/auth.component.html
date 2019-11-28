@@ -5,11 +5,11 @@
     <div class="row center-xs login-box">
 
       <div class="col-xs-6" (click)="goToLoginPage()">
-        <p> <i class="fa fa-arrow-up action-btn" [ngClass]="showLoginForm ? 'active-form' : ''"></i></p>
+        <p> <i class="fa fa-arrow-up action-btn" [ngClass]="showLoginForm ? 'active-form' : ''" placement="bottom" ngbTooltip="Sign in"></i></p>
       </div>
 
       <div class="col-xs-6"  (click)="goToCreatePage()">
-        <p> <i class="fa fa-user-plus action-btn" [ngClass]="showCreateForm ? 'active-form' : ''"></i></p>
+        <p> <i class="fa fa-user-plus action-btn" [ngClass]="showCreateForm ? 'active-form' : ''" placement="bottom" ngbTooltip="Not a member? Sign up now"></i></p>
       </div>
 
       <app-login *ngIf="showLoginForm"></app-login>
