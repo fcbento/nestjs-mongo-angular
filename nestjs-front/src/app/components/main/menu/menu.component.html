@@ -1,0 +1,14 @@
+<nav>
+    <div class="row start-xs">
+        <div id="sideBar" #sideBar>
+            <ul>
+                <li *ngFor="let menu of Menu.items">
+                    <i class="fa {{menu.icon}}"> </i>
+                    <a routerLink="/main/{{menu.name}}" (click)="close()">{{menu.name | titlecase }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>
