@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, Validators, EmailValidator, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { User } from '../../../models/user.model';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -13,39 +12,43 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CreateComponent implements OnInit {
 
-  public createForm: FormGroup;
-  public user: User;
+  public showCreateCompany: boolean = false;
+  public showCreateUser: boolean = false;
+  public showChooseRegisterType: boolean = true;
+  public option: string;
 
-  constructor
-    (private formBuilder: FormBuilder,
-      private userService: UserService,
-      private toastr: ToastrService,
-      private router: Router) {
+  constructor(private toastr: ToastrService) { }
 
-    this.createForm = this.formBuilder.group({
-      name: '',
-      last_name: '',
-      email: '',
-      phone: '',
-      document: '',
-      description: '',
-      password: ''
-    });
+  ngOnInit() {
 
   }
 
-  ngOnInit() {}
+  public prosseguirCadastro() {
 
-  public create(): void {
-    this.user = this.createForm.value;
-
-    this.userService.create(this.user).subscribe(data => {
-
-      this.toastr.success(data['message'], `Customer ${this.user.name} created`);
-      this.router.navigate(['home']);
-
-    }, (err) => {
-      this.toastr.error(err.error.message)
-    });
+    if (this.preventWithoutOption()) {
+      if (this.option === 'candidato') {
+        this.showCreateUser = true;
+        this.showChooseRegisterType = false;
+        this.showCreateCompany = false;
+      } else {
+        this.showCreateUser = false;
+        this.showChooseRegisterType = false;
+        this.showCreateCompany = true;
+      }
+    } else {
+      this.toastr.error('Escolha umas das opções')
+    }
   }
+
+  public escolha(option: string) {
+    this.option = option;
+  }
+
+  public preventWithoutOption(): boolean {
+    if (this.option) {
+      return true;
+    }
+    return false
+  }
+
 }

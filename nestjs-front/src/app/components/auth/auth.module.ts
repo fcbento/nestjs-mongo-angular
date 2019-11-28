@@ -14,6 +14,8 @@ import { LoginComponent } from './login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AuthRoutingModule } from './auth.routing.module';
 import { AuthComponent } from './auth.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { CreateCompanyComponent } from './create-company/create-company.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -21,7 +23,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
   declarations: [
     CreateComponent,
     LoginComponent,
-    AuthComponent
+    AuthComponent,
+    CreateUserComponent,
+    CreateCompanyComponent
   ],
   imports: [
     CommonModule,

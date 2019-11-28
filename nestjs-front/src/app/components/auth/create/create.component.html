@@ -1,62 +1,33 @@
-<form [formGroup]="createForm" (ngSubmit)="create()" class="login-section">
+<div *ngIf="showChooseRegisterType" class="login-section">
 
-    <div class="form-group row">
-        <label for="name" class="col-sm-3 col-form-label">Name</label>
-        <div class="col-sm-12">
-            <input type="text" class="form-control" id="firstName" placeholder="Enter first name" formControlName="name"
-                required>
-        </div>
-    </div>
+    <div class="row center-xs">
+        <div class="col xs-12">
+            <div class="container-radio">
+                <ul>
+                    <li>
+                        <input type="radio" id="f-option" name="selector" (click)="escolha('candidato')">
+                        <label for="f-option">Candidato</label>
+                        <div class="check"></div>
+                    </li>
 
-    <div class="form-group row">
-        <label for="lastName" class="col-sm-3 col-form-label">Last Name</label>
-        <div class="col-sm-12">
-            <input type="text" class="form-control" id="lasttName" placeholder="Enter last name"
-                formControlName="last_name" required>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="email" class="col-sm-3 col-form-label">Email</label>
-        <div class="col-sm-12">
-            <input type="text" pattern="^\S+@\S+$" class="form-control" id="email" placeholder="example@email.com"
-                formControlName="email" required>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="phone" class="col-sm-3 col-form-label">Phone</label>
-        <div class="col-sm-12">
-            <input type="text" class="form-control" id="phone" mask="(00) 00000-0000" [clearIfNotMatch]="true"
-                placeholder="(00) 00000-0000" formControlName="phone" required>
-        </div>
-    </div>
-
-
-    <div class="form-group row">
-        <label for="description" class="col-sm-3 col-form-label">Password</label>
-        <div class="col-sm-12">
-            <input type="password" class="form-control" id="description" placeholder="Password"
-                formControlName="password" required>
+                    <li>
+                        <input type="radio" id="s-option" name="selector" (click)="escolha('empresa')">
+                        <label for="s-option">Empresa</label>
+                        <div class="check">
+                            <div class="inside"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
     <div class="row center-xs">
-        <div class="col-xs-6">
-
-            <i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i>
+        <div class="col xs-12">
+            <i class="fa fa-arrow-circle-right fa-3x i-fa" placement="bottom" ngbTooltip="Prosseguir" (click)="prosseguirCadastro()"></i>
         </div>
     </div>
+</div>
 
-    <!-- <button type="button" class="btn btn-success btn-lg" [disabled]="createForm.get('name').hasError('required') || 
-                    createForm.get('last_name').hasError('required') || 
-                    createForm.get('email').hasError('required') ||
-                    createForm.get('email').hasError('pattern') ||
-                    createForm.get('phone').hasError('required') ||
-                    createForm.get('document').hasError('required') || 
-                    createForm.get('description').hasError('required') ||
-                    createForm.get('password').hasError('required')">
-        Create
-    </button> -->
-
-</form>
+<app-create-user *ngIf="showCreateUser"></app-create-user>
+<app-create-company *ngIf="showCreateCompany"></app-create-company>
